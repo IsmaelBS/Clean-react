@@ -1,4 +1,4 @@
-import { HttpPostClientSpy } from '../../test/http-client'
+import { HttpPostClientSpy } from '../../test/mock-http-client'
 import RemoteAuthentication from './remote-authentication'
 
 type SutTypes = {
@@ -18,7 +18,7 @@ const makeSut = (url: string = 'any_url'): SutTypes => {
 describe('RemoteAuthentication', () => {
   test('Should call HttpClient with correct URL', async () => {
     const url = 'other_url'
-    const { sut, httpPostClientSpy} = makeSut(url)
+    const { sut, httpPostClientSpy } = makeSut(url)
     await sut.auth()
     expect(httpPostClientSpy.url).toBe(url)
   })
