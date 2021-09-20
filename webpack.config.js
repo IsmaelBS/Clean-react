@@ -1,24 +1,26 @@
 const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: 'src/main/index.tsx',
+  entry: './src/main/index.tsx',
   output: {
     path: path.resolve(__dirname, 'public', 'js'),
-    publicPath: 'public/js',
+    publicPath: '/public/js',
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.scss'],
+    extensions: ['.js', '.ts', '.tsx', 'scss'],
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
   },
   module: {
-    reles: [
+    rules: [
       {
         test: /\.ts(x?)$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -47,5 +49,8 @@ module.exports = {
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM'
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin()
+  ]
 }
