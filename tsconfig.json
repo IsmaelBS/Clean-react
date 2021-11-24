@@ -7,7 +7,7 @@
       "esnext"
     ],
     "alwaysStrict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "module": "ESNext",
