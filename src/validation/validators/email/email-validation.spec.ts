@@ -1,6 +1,6 @@
 import faker from 'faker'
 import { InvalidFieldError } from '@/validation/errors'
-import { EmailValidation } from '@/validation/validators/email/email-validation'
+import { EmailValidation } from '@/validation/validators'
 
 describe('EmailValidation', () => {
   const makeSut = (): EmailValidation => {
