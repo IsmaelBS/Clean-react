@@ -1,6 +1,6 @@
 import faker from 'faker'
-import { LocalSaveAccessToken } from './local-save-access-token'
 import { SetStorageMock } from '@/data/test/mock-set-storage'
+import { LocalSaveAccessToken } from '@/data/usecases/save-access-token/local-save-access-token'
 
 type SutTypes = {
   sut: LocalSaveAccessToken
