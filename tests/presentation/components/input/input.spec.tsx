@@ -1,7 +1,7 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Input from './input'
 import Context from '@/presentation/context/form/form-context'
+import { Input } from '@/presentation/components'
 import faker from 'faker'
 
 const makeSut = (fieldName: string): HTMLElement => {
