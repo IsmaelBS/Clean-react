@@ -12,6 +12,7 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/tests/e2e/cypress'
   ],
+  testResultsProcessor: 'jest-sonar-reporter',
   testEnvironment: 'jsdom',
   transform: {
     '.+\\.(ts|tsx)$': 'ts-jest'
