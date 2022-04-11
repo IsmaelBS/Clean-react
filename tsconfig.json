@@ -20,7 +20,7 @@
       "@/tests/*": ["../tests/*"]
     },
     "allowJs": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "include": ["src", "tests"]
 }

@@ -1,15 +1,15 @@
 import { FieldValidation } from '@/validation/protocols/field-validation'
 
 export class FieldValidationSpy implements FieldValidation {
-  field: string;
+  field: string
   value: string
-  error: Error = null;
+  error: Error = null
   constructor (field: string) {
     this.field = field
   }
 
-  validate (value: string): Error {
-    this.value = value
+  validate (input: object): Error {
+    this.value = input[this.field]
     return this.error
   }
 }

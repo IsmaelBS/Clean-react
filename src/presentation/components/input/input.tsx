@@ -4,7 +4,7 @@ import Context from '@/presentation/context/form/form-context'
 
 type Props = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-const Input: React.FC<Props> = (props: Props) => {
+const Input: React.FC<Props> = (props) => {
   const { state, setState } = useContext(Context)
   const error = state[`${props.name}Error`]
 

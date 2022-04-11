@@ -1,6 +1,6 @@
 {
   "name": "cleanreact",
-  "version": "1.0.1",
+  "version": "1.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "commit": "cz",
     "test:watch": "npm test -- --watch",
     "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "jest test -- --coverage",
+    "test:ci": "npm test -- --coverage",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -62,9 +62,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.0"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   },
   "config": {
     "commitizen": {
