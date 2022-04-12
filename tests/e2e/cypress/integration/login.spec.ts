@@ -142,6 +142,34 @@ describe('Login', () => {
     cy.url().should('eq', `${url}/login`)
   })
 
+  it('Should present UnexpectError if invalid data is returned', () => {
+    cy.intercept(
+      {
+        method: 'POST',
+        url: /login/
+      },
+      {
+        statusCode: 200,
+        body: {
+          invalidData: faker.random.words()
+        }
+      }
+    ).as('UnexpectError')
+
+    cy.getByTestId('email')
+      .focus()
+      .type('mango@gmail.com')
+
+    cy.getByTestId('password')
+      .focus()
+      .type('12345')
+
+    cy.getByTestId('submit').click()
+      .getByTestId('spinner').should('not.exist')
+      .getByTestId('main-error').should('contain.text', 'Algo de arrado ocorreu. Tente novamente em breve')
+    cy.url().should('eq', `${url}/login`)
+  })
+
   it('Should present save accessToken if credentials are provided', () => {
     cy.getByTestId('email')
       .focus()
