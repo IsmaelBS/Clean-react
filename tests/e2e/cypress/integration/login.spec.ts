@@ -190,14 +190,15 @@ describe('Login', () => {
     cy.getByTestId('password')
       .focus()
       .type(faker.internet.password())
+      .type('{enter}')
 
-    cy.getByTestId('submit').click()
     cy.getByTestId('main-error').should('not.exist')
     cy.getByTestId('spinner').should('not.exist')
 
     cy.url().should('eq', `${url}/`)
     cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
   })
+
   it('Should prevent multiple submits', () => {
     cy.intercept(
       {
