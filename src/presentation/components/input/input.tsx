@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import Styles from './input-styles.scss'
 import Context from '@/presentation/context/form/form-context'
 
@@ -7,6 +7,7 @@ type Props = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>
 const Input: React.FC<Props> = (props) => {
   const { state, setState } = useContext(Context)
   const error = state[`${props.name}Error`]
+  const inputRef = useRef<HTMLInputElement>()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
@@ -19,18 +20,30 @@ const Input: React.FC<Props> = (props) => {
     event.target.readOnly = false
   }
 
-  const getStatus = (): string => {
-    return error ? '🔴' : '✅'
-  }
-
-  const getTitle = (): string => {
-    return error || 'Tudo certo!'
-  }
-
   return (
-    <div className={Styles.inputWrap}>
-      <input {...props} data-testid={props.name} readOnly onFocus={ enabledInput } onChange={handleChange} />
-      <span data-testid={`${props.name}-status`} title={getTitle()} className={Styles.status}>{getStatus()}</span>
+    <div
+      data-testid={`${props.name}-wrap`}
+      className={Styles.inputWrap}
+      data-status={ error ? 'invalid' : 'valid' }
+    >
+      <input
+        {...props}
+        ref={inputRef}
+        placeholder=" "
+        title={error}
+        data-testid={props.name}
+        readOnly
+        onFocus={ enabledInput }
+        onChange={ handleChange }
+      />
+      <label
+        data-testid={`${props.name}-label`}
+        htmlFor={props.name}
+        title={error}
+        onClick={() => inputRef.current.focus()}
+      >
+        { props.placeholder }
+      </label>
     </div>
   )
 }
